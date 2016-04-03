@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cncntr8 Session Viewer</title>
+    <% include templates/head.ejs %>
+  </head>
+  <body>
+    <h1>cncntr8 Session Viewer</h1>
+    <p>Welcome to the session viewer! Choose a session below.</p>
+    <table>
+      <thead>
+        <tr>
+          <th width="200">Name</th>
+          <th width="100">Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% for (var i = 0; i < sessions.length; i++) { %>
+        <tr>
+          <td><a href="/session/<%= sessions[i]._id %>"><%= sessions[i].name %></a></td>
+          <td><%= moment(sessions[i].startTime).format('dddd, MMMM Do YYYY, h:mm:ss a') %></td>
+        </tr>
+        <% } %>
+      </tbody>
+    </table>
+    
+    <% include templates/footer.ejs %>
+  </body>
+</html>

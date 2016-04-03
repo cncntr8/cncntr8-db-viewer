@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>cncntr8 Session Viewer</title>
+    <% include templates/head.ejs %>
+  </head>
+  <body>
+    <h1><%= session.name %></h1>
+    <h3 class="subheader">started <%= moment(session.startTime).format('dddd, MMMM Do YYYY, h:mm:ss a') %></h3>
+    <div id="chart"></div>
+    
+    <% include templates/footer.ejs %>
+    <script src="//cdn.plot.ly/plotly-latest.min.js"></script>
+    <script>
+      var metrics = JSON.parse('<%- JSON.stringify(metrics) %>');
+    </script>
+    <script src="/js/session-chart.js"></script>
+  </body>
+</html>
